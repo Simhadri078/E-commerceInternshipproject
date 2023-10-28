@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: #02cecb;
+            padding: 10px;
+            align-items: center;
+        }
+
+        .logo{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            margin-right: 5px;
+        }
+
+        .searchbar {
+            flex: 1;
+            display: flex;
+        }
+
+        .searchbar input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .searchbar button {
+            background-color: #02cecb;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile button{
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #fdc100;
+            color: black;
+            padding: 3px;
+            border-radius: 5px;
+            width: 80px;
+        }
+        .cart{
+            display: flex;
+            align-items: center;
+        }
+        .cart button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #fdc100;
+            color: black;
+            padding: 3px;
+            border-radius: 5px;
+            width: 80px;
+            margin-left: 10px;
+        }
+
+        .cart a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+            padding: 20px;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            text-align: center;
+            align-items: center;
+            align-content: center;
+            border-radius: 5px;
+            box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            
+        }
+
+        .product img {
+            max-width: 200px;
+            max-height: 300px;
+            margin: 20px auto;
+        }
+
+        .product h4 {
+            margin: 10px 0;
+        }
+
+        .product .price {
+            font-size: 18px;
+            color: #02cecb;
+        }
+
+        .product .options {
+            margin: 20px 0;
+        }
+
+        .product .options button {
+            background-color: #fdc100;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #cart {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #02cecb;
+            border-radius: 5px;
+        }
+
+        #cart h2 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        #cart ul {
+            list-style: none;
+        }
+
+        #cart ul li {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        #total-price {
+            font-size: 20px;
+            background-color: #fdc100;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <h2>E-commerce</h2>
+        </div>
+        <div class="searchbar">
+            <input type="text" placeholder="Search for Products, Brands and More...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="profile">
+            <button>Account</button>
+        </div>
+        <div class="cart">
+            <button><a href="#"><i class="fas fa-shopping-cart"></i>Cart</a></button>
+        </div>
+    </div>
+    <div class="products">
+        <div class="product" data-id="1">
+            <img src="https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/b/h/c/-original-imagth5xwrg4gfyp.jpeg?q=70" alt="product image">
+            <h4>SAMSUNG Galaxy S22 5G (Green, 128 GB)(8 GB RAM)</h4>
+            <p class="price">₹39,999</p>
+            <div class="options">
+                <button onclick="addToCart(1)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="2">
+            <img src="https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/v/f/d/-original-imagpgx4g2m63gfh.jpeg?q=70" alt="product image">
+            <h4>Google Pixel 7a (Snow, 128 GB)(8 GB RAM)</h4>
+            <p class="price">₹35,999</p>
+            <div class="options">
+                <button onclick="addToCart(2)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="3">
+            <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/k/j/n/-original-imags37gyajqxkgp.jpeg?q=70" alt="product image">
+            <h4>REDMI 12 (Moonstone Silver, 128 GB)(4 GB RAM)</h4>
+            <p class="price">₹9,499</p>
+            <div class="options">
+                <button onclick="addToCart(3)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="4">
+            <img src="https://rukminim2.flixcart.com/image/416/416/xif0q/mobile/r/s/r/-original-imagpfbtmrr7spgc.jpeg?q=70" alt="product image">
+            <h4>VIVO T2 5G (Velocity Wave, 128 GB)(8 GB RAM)</h4>
+            <p class="price">₹19,999</p>
+            <div class="options">
+                <button onclick="addToCart(4)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="5">
+            <img src="https://rukminim2.flixcart.com/image/416/416/xif0q/smartwatch/k/h/s/1-83-38083pp01-android-ios-fastrack-yes-original-imagnhzeabmcfspe.jpeg?q=70" alt="product image">
+            <h4>Fastrack Revoltt FS1|1.83 Display|BT Calling|Fastcharge|110+ Sports Mode|200+ WatchFaces Smartwatch(Black Strap, Free Size)</h4>
+            <p class="price">₹1,499</p>
+            <div class="options">
+                <button onclick="addToCart(5)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="6">
+            <img src="https://rukminim2.flixcart.com/image/416/416/xif0q/smartwatch/n/6/0/-original-imagkfm8zzyqvr5c.jpeg?q=70" alt="product image">
+            <h4>Fire-Boltt Wonder 1.8" Bluetooth Calling Smart Watch with AI Voice Assistant & Calculator Smartwatch(Red Strap, Free Size)</h4>
+            <p class="price">₹1,299</p>
+            <div class="options">
+                <button onclick="addToCart(6)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="7">
+            <img src="https://rukminim2.flixcart.com/image/416/416/k4a7c7k0/printer/y/j/z/canon-e3370-original-imafn2wyyxjjvzd6.jpeg?q=70" alt="product image">
+            <h4>Canon PIXMA E3370 Multi-function WiFi Color Inkjet Printer(Borderless Printing)(Black, Ink Cartridge)</h4>
+            <p class="price">₹5,000</p>
+            <div class="options">
+                <button onclick="addToCart(7)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="8">
+            <img src="https://rukminim2.flixcart.com/image/416/416/xif0q/printer/c/a/9/smart-tank-all-in-one-589-hp-original-imagkqjq7vh73dkh.jpeg?q=70" alt="product image">
+            <h4>HP Smart Tank All In One 589 Multi-function WiFi Color Inkjet Printer(Moab White, Ink Bottle)</h4>
+            <p class="price">₹13,599</p>
+            <div class="options">
+                <button onclick="addToCart(8)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="9">
+            <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/ethnic-set/b/k/m/xs-20203o-grey-libas-original-imag7fc6pvcwztt5-bb.jpeg?q=70" alt="product image">
+            <h4>Women Chanderi Kurta Palazzo Set</h4>
+            <p class="price">₹3,499</p>
+            <div class="options">
+                <button onclick="addToCart(9)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="10">
+            <img src="https://rukminim2.flixcart.com/image/832/832/kvmpq4w0/jacket/k/f/g/l-no-ttjk001276-tokyo-talkies-original-imag8hfvwfykz5v3.jpeg?q=70" alt="product image">
+            <h4>Women Solid Casual Jacket</h4>
+            <p class="price">₹2,749</p>
+            <div class="options">
+                <button onclick="addToCart(10)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="11">
+            <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/t/e/o/m-m7ss22pn019c-m7-by-metronaut-original-imagmfv5z3teqgfb.jpeg?q=70" alt="product image">
+            <h4>Men Striped Polo Neck Cotton Blend Dark Green T-Shirt</h4>
+            <p class="price">₹1,399</p>
+            <div class="options">
+                <button onclick="addToCart(11)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="12">
+            <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/waistcoat/z/m/z/42-favjc161127-42-favoroski-original-imafgmydgamajzgc-bb.jpeg?q=70" alt="product image">
+            <h4>Solid Men Waistcoat</h4>
+            <p class="price">₹1,078</p>
+            <div class="options">
+                <button onclick="addToCart(12)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="13">
+            <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/shoe/q/g/e/-original-imagtbtdqkgby4cg.jpeg?q=70" alt="product image">
+            <h4>574 Sneakers For Men(Blue)</h4>
+            <p class="price">₹5,279</p>
+            <div class="options">
+                <button onclick="addToCart(13)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="14">
+            <img src="https://rukminim2.flixcart.com/image/832/832/kms2j680/wallet-card-wallet/9/c/b/rfid-protected-genuine-high-quality-leather-wallet-for-men-original-imagfhszpzrpwgpn.jpeg?q=70" alt="product image">
+            <h4>Men Formal Black Genuine Leather RFID Wallet - Regular Size(8 Card Slots)</h4>
+            <p class="price">₹1,999</p>
+            <div class="options">
+                <button onclick="addToCart(14)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="15">
+            <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/anklet/j/k/7/na-na-2-090-drama-queen-fashion-original-imaghpsm2afabug8.jpeg?q=70" alt="product image">
+            <h4>Tajmahal Jhalar Payal Silver Anklet(Pack of 2)</h4>
+            <p class="price">₹999</p>
+            <div class="options">
+                <button onclick="addToCart(15)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+        <div class="product" data-id="16">
+            <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/hand-messenger-bag/5/o/o/-original-imagsqeuf72wdz9v.jpeg?q=70" alt="product image">
+            <h4>Women Pink Hand-held Bag</h4>
+            <p class="price">₹999</p>
+            <div class="options">
+                <button onclick="addToCart(16)"><i class="fas fa-shopping-cart"></i>Add to Cart</button>
+                <button>Buy Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="cart_" >
+        <h2>Shopping Cart</h2>
+        <ul id="cart"></ul>
+        <p>Total Price: ₹<span id="total-price">0.00</span></p>
+    </div>
+    <script>
+        let cart = [];
+
+        function addToCart(productId) {
+            cart.push(productId);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById('cart');
+            const totalPriceElement = document.getElementById('total-price');
+            let total = 0;
+            cartList.innerHTML = '';
+
+            for (const productId of cart) {
+                const product = getProductById(productId);
+                if (product) {
+                    const li = document.createElement('li');
+                    li.textContent = `${product.name} - ₹${product.price.toFixed(2)}`;
+                    cartList.appendChild(li);
+                    total += product.price;
+                }
+            }
+            totalPriceElement.textContent = total.toFixed(2);
+        }
+
+        function getProductById(productId) {
+            const products = {
+                1: { name: "SAMSUNG Galaxy S22 5G (Green, 128 GB)(8 GB RAM)", price: 39999.00 },
+                2: { name: "Google Pixel 7a (Snow, 128 GB)(8 GB RAM)", price: 35999.00 },
+                3: { name: "REDMI 12 (Moonstone Silver, 128 GB)(4 GB RAM)", price: 9499.00 },
+                4: { name: "VIVO T2 5G (Velocity Wave, 128 GB)(8 GB RAM)", price: 19999.00 },
+                5: { name: "Fastrack Revoltt FS1|1.83 Display|BT Calling|Fastcharge|110+ Sports Mode|200+ WatchFaces Smartwatch(Black Strap, Free Size)", price: 1499.00 },
+                6: { name: "Fire-Boltt Wonder 1.8 Bluetooth Calling Smart Watch with AI Voice Assistant & Calculator Smartwatch(Red Strap, Free Size)", price: 1299.00 },
+                7: { name: "Canon PIXMA E3370 Multi-function WiFi Color Inkjet Printer(Borderless Printing)(Black, Ink Cartridge)", price: 5000.00 },
+                8: { name: "HP Smart Tank All In One 589 Multi-function WiFi Color Inkjet Printer(Moab White, Ink Bottle)", price: 13599.00 },
+                9: { name: "Women Chanderi Kurta Palazzo Set", price: 3499.00 },
+                10: { name: "Women Solid Casual Jacket", price: 2749.00 },
+                11: { name: "Men Striped Polo Neck Cotton Blend Dark Green T-Shirt", price: 1399.00 },
+                12: { name: "Solid Men Waistcoat", price: 1078.00 },
+                13: { name: "574 Sneakers For Men(Blue)", price: 5279.00 },
+                14: { name: "Men Formal Black Genuine Leather RFID Wallet - Regular Size(8 Card Slots)", price: 1999.00 },
+                15: { name: "Tajmahal Jhalar Payal Silver Anklet(Pack of 2)", price: 999.00 },
+                16: { name: "Women Pink Hand-held Bag", price: 999.00 }
+            };
+
+            return products[productId];
+        }
+    </script>
+</body>
+</html>
